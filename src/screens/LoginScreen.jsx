@@ -13,17 +13,17 @@ export default function LogInScreen(props) {
   
   function handlePress() {
     firebase.auth().signInWithEmailAndPassword(email, password)
-    .then((userCredentail) => {
-      const { user } = userCredentail;
-      console.log(user.uid);
-      navigation.reset({
-        index: 0,
-        routes: [{ name: 'MemoList' }],
+      .then((userCredential) => {
+        const { user } = userCredential;
+        console.log(user.uid);
+        navigation.reset({
+          index: 0,
+          routes: [{ name: 'MemoList' }],
+        });
+      })
+      .catch((error) => {
+        Alert.alert(error.code);
       });
-    })
-    .catch((error) => {
-      Alert.alert(error.code);
-    });
   }
 
   return(
