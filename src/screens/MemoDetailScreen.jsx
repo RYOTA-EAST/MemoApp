@@ -56,7 +56,7 @@ export default function MemoDetailScreen(props) {
 }
 
 MemoDetailScreen.propTypes = {
-  routes: shape({
+  route: shape({
     params: shape({ id: string }),
   }).isRequired,
 };
