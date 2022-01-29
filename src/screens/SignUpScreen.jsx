@@ -14,22 +14,19 @@ export default function SignUpScreen(props) {
 
   function handlePress() {
     firebase.auth().createUserWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-        const { user } = userCredential;
-        console.log(user.uid);
+      .then(() => {
         navigation.reset({
           index: 0,
           route: [{ name: 'MemoList' }],
         });
       })
       .catch((error) => {
-        console.log(error.code, error.message);
         const errorMsg = translateErrors(error.code);
         Alert.alert(errorMsg.title, errorMsg.description);
       });
   }
 
-  return(
+  return (
     <View style={styles.container}>
       <View style={styles.inner}>
         <Text style={styles.title}>Sign Up</Text>
@@ -37,17 +34,17 @@ export default function SignUpScreen(props) {
           style={styles.input}
           value={email}
           onChangeText={(text) => { setEmail(text); }}
-          autoCapitalize='none'
-          keyboardType='email-address'
-          placeholder='Email Address'
-          textContentType='emailAddress'
+          autoCapitalize="none"
+          keyboardType="email-address"
+          placeholder="Email Address"
+          textContentType="emailAddress"
         />
         <TextInput
           style={styles.input}
           value={password}
           onChangeText={(text) => { setPassword(text); }}
-          autoCapitalize='none'
-          placeholder='password'
+          autoCapitalize="none"
+          placeholder="password"
           secureTextEntry
         />
         <Button
@@ -103,7 +100,7 @@ const styles = StyleSheet.create({
   footerLink: {
     fontSize: 14,
     lineHeight: 24,
-    color: '#467FD3'
+    color: '#467FD3',
   },
   footer: {
     flexDirection: 'row',

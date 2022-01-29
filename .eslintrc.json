@@ -19,6 +19,6 @@
     ],
     "rules": {
         "no-use-before-define": 0,
-        "react/props-types": ["error", {"ifnore": ["navigation"] }],
+        "react/props-types": ["error", {"ignore": ["navigation"] }]
     }
 }

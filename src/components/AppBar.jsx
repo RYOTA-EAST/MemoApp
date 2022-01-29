@@ -20,10 +20,10 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
   },
   appbarInner: {
-    alignItems: "center",
+    alignItems: 'center',
   },
   appbarRight: {
-    position: "absolute",
+    position: 'absolute',
     right: 19,
     bottom: 18,
     color: 'rgba(255, 255, 255, 0.8)',
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     marginBottom: 8,
     fontSize: 24,
     lineHeight: 32,
-    color: "#ffffff",
-    fontWeight: "bold",
+    color: '#ffffff',
+    fontWeight: 'bold',
   },
 });

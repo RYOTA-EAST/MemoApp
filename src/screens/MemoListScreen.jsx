@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Alert, StyleSheet, View, Text } from 'react-native';
+import {
+  Alert, StyleSheet, View, Text,
+} from 'react-native';
 import firebase from 'firebase';
 
 import MemoList from '../components/MemoList';
@@ -8,7 +10,7 @@ import LogOutButton from '../components/LogOutButton';
 import Button from '../components/Button';
 import Loading from '../components/Loading';
 
-export default function MemoListScreen(props){
+export default function MemoListScreen(props) {
   const { navigation } = props;
   const [memos, setMemos] = useState([]);
   const [isLoading, setLoading] = useState(false);
@@ -25,10 +27,9 @@ export default function MemoListScreen(props){
     if (currentUser) {
       setLoading(true);
       const ref = db.collection(`users/${currentUser.uid}/memos`).orderBy('updatedAt', 'desc');
-      const unsubscribe = ref.onSnapshot((snapshot) =>{
+      const unsubscribe = ref.onSnapshot((snapshot) => {
         const userMemos = [];
         snapshot.forEach((doc) => {
-          console.log(doc.id, doc.data());
           const data = doc.data();
           userMemos.push({
             id: doc.id,
@@ -38,10 +39,9 @@ export default function MemoListScreen(props){
         });
         setMemos(userMemos);
         setLoading(false);
-      }, (error) => {
-        console.log(error);
+      }, () => {
         setLoading(false);
-        Alert.alert("データの読み込みに失敗しました");
+        Alert.alert('データの読み込みに失敗しました');
       });
     }
     return unsubscribe;
@@ -56,23 +56,23 @@ export default function MemoListScreen(props){
           <Button
             style={emptyStyles.button}
             label="作成する"
-            onPress={() => { navigation.navigate('MemoCreate') }}
+            onPress={() => { navigation.navigate('MemoCreate'); }}
           />
         </View>
       </View>
-    )
+    );
   }
 
   return (
     <View style={styles.container}>
 
-    <MemoList memos={memos} />
-    <CircleButton
-      name="plus"
-      onPress={() => { navigation.navigate('MemoCreate'); }}
-    />
+      <MemoList memos={memos} />
+      <CircleButton
+        name="plus"
+        onPress={() => { navigation.navigate('MemoCreate'); }}
+      />
 
-  </View>
+    </View>
   );
 }
 
@@ -81,13 +81,13 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
-})
+});
 
 const emptyStyles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   inner: {
     justifyContent: 'center',

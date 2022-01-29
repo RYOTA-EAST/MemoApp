@@ -37,8 +37,9 @@ export default function MemoEditScreen(props) {
       <View style={styles.inputContainer}>
         <TextInput
           value={body}
-          multiline style={styles.input}
-          onChangeText = {(text) => { setBody(text); }}
+          multiline
+          style={styles.input}
+          onChangeText={(text) => { setBody(text); }}
         />
       </View>
       <CircleButton

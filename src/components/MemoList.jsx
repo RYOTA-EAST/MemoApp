@@ -13,7 +13,7 @@ import { dateToString } from '../utils';
 
 export default function MemoList(props) {
   const { memos } = props;
-  const navigation =useNavigation();
+  const navigation = useNavigation();
 
   function deleteMemo(id) {
     const { currentUser } = firebase.auth();
@@ -39,7 +39,7 @@ export default function MemoList(props) {
   }
 
   function renderItem({ item }) {
-    return(
+    return (
       <TouchableOpacity
         style={styles.memoListItem}
         onPress={() => { navigation.navigate('MemoDetail', { id: item.id }); }}
@@ -48,14 +48,14 @@ export default function MemoList(props) {
           <Text style={styles.memoListItemTitle} numberOfLines={1}>{item.bodyText}</Text>
           <Text style={styles.memoListItemDate}>{dateToString(item.updatedAt)}</Text>
         </View>
-        <TouchableOpacity 
+        <TouchableOpacity
           style={styles.memoDelete}
           onPress={() => { deleteMemo(item.id); }}
         >
           <Feather name="x" size={24} color="#B0B0B0" />
         </TouchableOpacity>
       </TouchableOpacity>
-    )
+    );
   }
   return (
     <View style={styles.container}>
@@ -81,14 +81,14 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   memoListItem: {
-    backgroundColor: "#ffffff",
-    flexDirection: "row",
-    justifyContent: "space-between",
+    backgroundColor: '#ffffff',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     paddingVertical: 16,
     paddingHorizontal: 19,
-    alignItems: "center",
+    alignItems: 'center',
     borderBottomWidth: 1,
-    borderColor: "rgba(0, 0, 0, 0.15)"
+    borderColor: 'rgba(0, 0, 0, 0.15)',
   },
   memoListItemTitle: {
     fontSize: 16,
@@ -97,9 +97,9 @@ const styles = StyleSheet.create({
   memoListItemDate: {
     fontSize: 12,
     lineHeight: 16,
-    color: "#848484",
+    color: '#848484',
   },
   memoDelete: {
     padding: 8,
-  }
+  },
 });

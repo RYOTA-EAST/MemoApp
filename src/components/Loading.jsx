@@ -40,5 +40,5 @@ const styles = StyleSheet.create({
   },
   inner: {
     marginBottom: 80,
-  }
+  },
 });

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { shape, string } from 'prop-types';
-import { 
+import {
   View, ScrollView, Text, StyleSheet,
 } from 'react-native';
 import firebase from 'firebase';
@@ -11,18 +11,16 @@ import { dateToString } from '../utils';
 export default function MemoDetailScreen(props) {
   const { navigation, route } = props;
   const { id } = route.params;
-  console.log(id);
   const [memo, setMemo] = useState(null);
 
   useEffect(() => {
     const { currentUser } = firebase.auth();
     let unsubscribe = () => {};
 
-    if (currentUser){
+    if (currentUser) {
       const db = firebase.firestore();
       const ref = db.collection(`users/${currentUser.uid}/memos`).doc(id);
       unsubscribe = ref.onSnapshot((doc) => {
-        console.log(doc.id, doc.data());
         const data = doc.data();
         setMemo({
           id: doc.id,
@@ -32,7 +30,6 @@ export default function MemoDetailScreen(props) {
       });
     }
     return unsubscribe;
-
   }, []);
 
   return (
@@ -52,7 +49,7 @@ export default function MemoDetailScreen(props) {
         onPress={() => { navigation.navigate('MemoEdit', { id: memo.id, bodyText: memo.bodyText }); }}
       />
     </View>
-  );  
+  );
 }
 
 MemoDetailScreen.propTypes = {
@@ -84,12 +81,12 @@ const styles = StyleSheet.create({
     fontSize: 12,
     lineHeight: 16,
   },
-  memoBody:{
+  memoBody: {
     paddingVertical: 32,
     paddingHorizontal: 27,
   },
-  memoText:{
+  memoText: {
     fontSize: 16,
     lineHeight: 24,
-  }
+  },
 });

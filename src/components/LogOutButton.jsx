@@ -7,18 +7,18 @@ import { useNavigation } from '@react-navigation/native';
 
 export default function LogOutButton() {
   const navigation = useNavigation();
-  
+
   function handlePress() {
     firebase.auth().signOut()
-    .then(() => {
-      navigation.reset({
-        index: 0,
-        routes: [{ name: 'LogIn' }],
+      .then(() => {
+        navigation.reset({
+          index: 0,
+          routes: [{ name: 'LogIn' }],
+        });
+      })
+      .catch(() => {
+        Alert.alert('ログアウトに失敗しました');
       });
-    })
-    .catch(() => {
-      Alert.alert('ログアウトに失敗しました');
-    })
   }
   return (
     <TouchableOpacity onPress={handlePress} style={styles.container}>
