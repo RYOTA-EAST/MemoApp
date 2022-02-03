@@ -6,7 +6,7 @@ export function dateToString(date) {
 }
 
 export function translateErrors(code) {
-  const error = { title: 'エラー', description: '時間をおいてお試しください'};
+  const error = { title: 'エラー', description: '時間をおいてお試しください' };
   switch (code) {
     case 'auth/invalid-email':
       error.description = 'メールアドレスが不正です。';
@@ -22,9 +22,6 @@ export function translateErrors(code) {
       break;
     case 'auth/email-already-in-use':
       error.description = 'メールアドレスが使用されています。';
-      break;
-    case 'auth/invalid-email':
-      error.description = 'メールアドレスが不正です。';
       break;
     case 'auth/operation-not-allowed':
       error.description = '開発者に問い合わせください。';

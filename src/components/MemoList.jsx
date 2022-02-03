@@ -68,11 +68,11 @@ export default function MemoList(props) {
   );
 }
 
-MemoList.propsTypes = {
+MemoList.propTypes = {
   memos: arrayOf(shape({
     id: string,
     bodyText: string,
-    updatedat: instanceOf(Date),
+    updatedAt: instanceOf(Date),
   })).isRequired,
 };
 

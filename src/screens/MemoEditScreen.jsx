@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { 
-  View, TextInput, StyleSheet, Alert, 
+import {
+  View, TextInput, StyleSheet, Alert,
 } from 'react-native';
 import { shape, string } from 'prop-types';
 import firebase from 'firebase';
