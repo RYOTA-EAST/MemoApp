@@ -17,7 +17,7 @@ export default function SignUpScreen(props) {
       .then(() => {
         navigation.reset({
           index: 0,
-          route: [{ name: 'MemoList' }],
+          routes: [{ name: 'MemoList' }],
         });
       })
       .catch((error) => {
@@ -44,11 +44,11 @@ export default function SignUpScreen(props) {
           value={password}
           onChangeText={(text) => { setPassword(text); }}
           autoCapitalize="none"
-          placeholder="password"
+          placeholder="Password"
           secureTextEntry
         />
         <Button
-          label="submit"
+          label="Submit"
           onPress={handlePress}
         />
         <View style={styles.footer}>
