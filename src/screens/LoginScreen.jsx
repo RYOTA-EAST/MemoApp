@@ -45,7 +45,7 @@ export default function LogInScreen(props) {
       });
   }
 
-  return(
+  return (
     <View style={styles.container}>
       <Loading isLoading={isLoading} />
       <View style={styles.inner}>
